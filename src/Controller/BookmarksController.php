@@ -111,4 +111,19 @@ class BookmarksController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+    
+    /**
+     * Possibilita a busca por tags 
+     * Bookmarker/bookmarks/tagged/teste/teste2
+     */
+    public function tags()
+    {
+        $tags = $this->request->getParam('pass');
+        
+        $bookmarks = $this->Bookmarks->find('tagged', [
+            'tags' => $tags
+        ]);
+        $this->set(compact('bookmarks', 'tags'));
+    }
+    
 }
