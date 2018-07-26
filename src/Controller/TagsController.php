@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Event\Event;
 
 /**
  * Tags Controller
@@ -12,7 +13,15 @@ use App\Controller\AppController;
  */
 class TagsController extends AppController
 {
-
+    
+    
+    public function beforeFilter(Event $event)
+    {
+        
+        $this->Auth->allow();
+    }
+    
+    
     /**
      * Index method
      *
@@ -21,6 +30,7 @@ class TagsController extends AppController
     public function index()
     {
         $tags = $this->paginate($this->Tags);
+        
 
         $this->set(compact('tags'));
     }

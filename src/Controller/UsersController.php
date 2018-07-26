@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Event\Event;
 
 /**
  * Users Controller
@@ -13,10 +14,11 @@ use App\Controller\AppController;
 class UsersController extends AppController
 {
 
-    
-    public function beforeFilter(\Cake\Event\Event $event)
+   
+    public function beforeFilter(Event $event)
     {
-        $this->Auth->allow(['add']);
+        
+        $this->Auth->allow(['add','logout','index']);
     }
     
     /**
